@@ -1,0 +1,23 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+
+main input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    display: none;
+}
+
+main button span {
+    margin-left: 10px;
+}
+
+$upload-button-theme: igx-button-theme( $icon-background: igx-color($default-palette, primary), $icon-color: rgb(255, 255, 255), $icon-hover-background: igx-color($default-palette, primary, 200), $icon-hover-color: rgb(255, 255, 255), $icon-focus-background: igx-color($default-palette, primary), $icon-focus-color: rgb(255, 255, 255));
+:host {
+    ::ng-deep {
+        .upload-button {
+            @include igx-button($upload-button-theme);
+        }
+    }
+}

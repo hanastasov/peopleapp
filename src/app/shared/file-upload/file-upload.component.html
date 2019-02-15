@@ -1,0 +1,15 @@
+<main>
+    <input name="fileInput"
+        id="fileInput"
+        #fileInput
+        type="file"
+        (change)="onFileSelected(fileInput)" />
+
+    <div class="upload-button">
+        <button igxButton="icon"
+            igxRipple="white"
+            (click)="fileInput.click()">
+            <igx-icon>add</igx-icon>
+        </button>
+    </div>
+</main>

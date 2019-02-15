@@ -1,0 +1,117 @@
+<!--
+    In this file you'll see this syntax used 8 times:  displayMessage['image']
+    because of this bug https://github.com/angular/vscode-ng-language-service/issues/149
+
+    Normally you could just write displayMessage.image and it works, but the editor
+    paints squiggles and you get errors in the vscode status bar.
+    This is better than false errors.
+-->
+
+<main>
+    <form novalidate
+        [formGroup]="personForm">
+        <section>
+            <div style="max-width: 88px; margin-bottom:20px">
+                <igx-avatar size="large"
+                    roundShape="true"
+                    (click)="avatarClicked()"
+                    [src]="person.image">
+                    <app-file-upload class="file-upload"
+                        (fileSelected)='onFileSelected($event)'></app-file-upload>
+                </igx-avatar>
+            </div>
+        </section>
+        <span class="error-text"
+            *ngIf="displayMessage['image']">
+            {{displayMessage['image']}}
+        </span>
+
+        <div class="vertical-spacing name-input">
+            <igx-input-group>
+                <igx-prefix>
+                    <igx-icon name="account_circle"></igx-icon>
+                </igx-prefix>
+                <input formControlName="name"
+                    type="text"
+                    igxInput />
+                <label igxLabel>Name</label>
+            </igx-input-group>
+
+            <span class="error-text"
+                *ngIf="displayMessage['name']">
+                {{displayMessage['name']}}
+            </span>
+        </div>
+
+        <div class="vertical-spacing">
+            <igx-datePicker formControlName="birthdate"></igx-datePicker>
+            <span class="error-text"
+                *ngIf="displayMessage['birthdate']">
+                {{displayMessage['birthdate']}}
+            </span>
+        </div>
+
+        <div class="vertical-spacing radio-group primary-radio">
+            <igx-radio *ngFor="let item of genderKeys"
+                [value]="item"
+                name="gender"
+                formControlName="gender">{{gender[item]}}</igx-radio>
+
+            <span class="error-text"
+                *ngIf="displayMessage['gender']">
+                {{displayMessage['gender']}}
+            </span>
+        </div>
+
+        <div class="vertical-spacing slider-row primary-slider">
+            <label class="rank-text">Ranking {{slider.value}} </label>
+            <igx-slider minValue="0"
+                #slider
+                maxValue="100"
+                lowerBound="0"
+                formControlName="userRank">
+            </igx-slider>
+        </div>
+
+        <div class="vertical-spacing primary-checkbox">
+            <igx-checkbox formControlName="isAdmin">
+                Is Admin
+            </igx-checkbox>
+        </div>
+
+        <div class="vertical-spacing bottom-for-button-div">
+            <div class="save-button">
+                <button igxButton="raised"
+                    igxRipple
+                    (click)="onSaveClicked()">
+                    Save
+                </button>
+            </div>
+            <div class="cancel-button">
+                <button igxButton="raised"
+                    igxRipple
+                    [routerLink]="['/people']">
+                    Cancel
+                </button>
+            </div>
+            <div class="delete-button">
+                <button igxButton="raised"
+                    igxRipple
+                    *ngIf="person.id"
+                    (click)="dialog.open()">
+                    Delete
+                </button>
+            </div>
+        </div>
+
+        <igx-dialog #dialog
+            title="Confirmation"
+            leftButtonLabel="Cancel"
+            (onLeftButtonSelect)="dialog.close()"
+            rightButtonLabel="OK"
+            rightButtonRipple="#4CAF50"
+            (onRightButtonSelect)="onDialogOKSelected($event)"
+            message="Are you sure you want to delete this person?">
+        </igx-dialog>
+    </form>
+</main>

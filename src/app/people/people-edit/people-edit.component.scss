@@ -1,0 +1,138 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-theme';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-component';
+@import '~igniteui-angular/lib/core/styles/components/slider/slider-theme';
+@import '~igniteui-angular/lib/core/styles/components/slider/slider-component';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
+@import '~igniteui-angular/lib/core/styles/components/radio/radio-theme';
+@import '~igniteui-angular/lib/core/styles/components/radio/radio-component';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
+
+main {
+    padding: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(black, 0.05);
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.file-upload {
+    position: absolute;
+    right: -95px;
+    bottom: -10px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-group igx-radio {
+    margin-top: 10px;
+}
+
+main form section {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    vertical-align: middle;
+}
+
+main form section app-file-upload {
+    margin-left: 15px;
+    align-self: center;
+}
+
+button {
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.vertical-spacing {
+    margin-top: 15px;
+}
+
+main form .slider-row {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
+main form .slider-row label {
+    width: 150px;
+}
+
+main form .slider-row igx-slider {
+    width: 100%
+}
+
+.rank-text {
+    text-align: left;
+    font-size: 16px;
+    color: igx-color($default-palette, grays, 900);
+}
+
+;
+$name-theme: igx-input-group-theme( $idle-bottom-line-color: igx-color($default-palette, grays), $box-background: transparent, $border-background: transparent, $variant: 'dark');
+$rank-slider-theme: igx-slider-theme( $label-text-color: rgb(255, 255, 255), $label-background-color: igx-color($default-palette, primary), $track-color: igx-color($default-palette, primary), $thumb-color: igx-color($default-palette, primary), $variant: 'dark');
+$gender-radio-theme: igx-radio-theme( $label-color: igx-color($default-palette, grays, 900), $fill-color: igx-color($default-palette, primary));
+$isadmin-checkbox-theme: igx-checkbox-theme( $label-color: igx-color($default-palette, grays, 900), $fill-color: igx-color($default-palette, primary), $tick-color: rgb(255, 255, 255), $variant: 'dark');
+$save-button-theme: igx-button-theme( $raised-background: igx-color($default-palette, primary), $raised-text-color: igx-contrast-color($default-palette, primary));
+$cancel-button-theme: igx-button-theme( $raised-background: igx-color($default-palette, primary), $raised-text-color: igx-contrast-color($default-palette, primary));
+$delete-button-theme: igx-button-theme( $raised-background: igx-color($default-palette, error), $raised-text-color: rgb(255, 255, 255));
+:host {
+    ::ng-deep {
+        .save-button {
+            @include igx-button($save-button-theme);
+        }
+        .cancel-button {
+            @include igx-button($cancel-button-theme);
+        }
+        .delete-button {
+            @include igx-button($delete-button-theme);
+        }
+        .gender-radio {
+            @include igx-radio($gender-radio-theme);
+        }
+        .isadmin-checkbox {
+            @include igx-checkbox($isadmin-checkbox-theme);
+        }
+        .rank-slider {
+            @include igx-slider($rank-slider-theme);
+        }
+        .name-input {
+            @include igx-input-group($name-theme);
+        }
+    }
+}
+
+/*
+    this class required so that the Ignite UI buttons in the last
+    div will take up space and show up in the overflow-y when the
+    screen height is smaller than the form height
+    without this, the buttons in the div will not be visibl in a
+    scrolling regin.
+*/
+
+.bottom-for-button-div {
+    margin-bottom: 75px;
+    display: flex;
+}
+
+.bottom-for-button-div div {
+    display: inline;
+}

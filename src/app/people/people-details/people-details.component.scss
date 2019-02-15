@@ -1,0 +1,93 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+@import '~igniteui-angular/lib/core/styles/components/badge/badge-theme';
+@import '~igniteui-angular/lib/core/styles/components/badge/badge-component';
+
+main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(igx-color($default-palette, primary), .10);
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.people-details {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.center-wrapper {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.information {
+    width: 122px;
+    height: 148px;
+    display: flex;
+    flex-direction: column;
+}
+
+.information-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.information-1 igx-avatar {
+    margin-left: 15px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.gender-birthday {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    color: igx-color($default-palette, grays, 900);
+    width: 132px;
+}
+
+.name {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 16px;
+    color: igx-color($default-palette, grays, 900);
+}
+
+.rank {
+    top: 0;
+    right: 15px;
+    position: relative;
+}
+
+$edit-theme: igx-button-theme( $fab-background: igx-color($default-palette, primary), $fab-text-color: rgb(255, 255, 255));
+$admin-badge-theme: igx-badge-theme( $disable-shadow: false, $background-color: igx-color($default-palette, primary), $border-color: rgb(255, 255, 255), $text-color: rgb(255, 255, 255));
+:host {
+    ::ng-deep {
+        .edit {
+            @include igx-button($edit-theme);
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        .admin-badge {
+            @include igx-badge($admin-badge-theme);
+            margin-left: 5px;
+        }
+    }
+}

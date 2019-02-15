@@ -1,0 +1,47 @@
+<main>
+    <nav>
+        <igx-nav-drawer #navDrawer
+            pinThreshold="3000px"
+            enableGestures="true"
+            width="280px">
+            <ng-template igxDrawer>
+                <header igxDrawerItem
+                    isHeader="true">Applications</header>
+                <span *ngFor="let item of navigationItems"
+                    igxDrawerItem
+                    igxRipple
+                    (click)="navDrawer.toggle()"
+                    routerLinkActive="active"
+                    routerLink="{{ item.link }}">
+                    <img src="assets/{{ item.icon }}">
+                    <span>{{ item.text }}</span>
+                </span>
+            </ng-template>
+        </igx-nav-drawer>
+
+        <header>
+            <igx-navbar title="{{ title }}"
+                actionButtonIcon="menu"
+                (onAction)="navDrawer.toggle()">
+
+                <igx-icon name="add"
+                    *ngIf="showAddButton"
+                    title="Add new item to People."
+                    (click)="onAddClicked()">
+                </igx-icon>
+
+            </igx-navbar>
+
+            <section>
+                <i class="fa fa-circle-o-notch fa-spin loading"
+                    *ngIf="navigationInProgress"
+                    style="font-size:96px">
+                </i>
+
+                <router-outlet></router-outlet>
+
+                <igx-toast #toast></igx-toast>
+            </section>
+        </header>
+    </nav>
+</main>

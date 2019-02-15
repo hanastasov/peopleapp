@@ -1,0 +1,10 @@
+<main>
+    <nav>
+        <app-people-list (personSelected)='onPersonSelected($event)'
+            [people]='people'>
+        </app-people-list>
+    </nav>
+    <section>
+        <router-outlet></router-outlet>
+    </section>
+</main>

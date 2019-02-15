@@ -1,0 +1,43 @@
+<main>
+    <form>
+        <div class="people-details">
+            <div class="center-wrapper">
+                <div class="information">
+                    <div class="information-1">
+                        <igx-avatar size="large"
+                            roundShape="true"
+                            src="{{ person.image }}">
+                        </igx-avatar>
+                        <div class="rank">
+                            <igx-badge type="success"
+                                value="{{ person.userRank }}">
+                            </igx-badge>
+                        </div>
+                    </div>
+                    <div class="center">
+                        <span class="name"> {{ person.name }}</span>
+                        <div *ngIf="person.isAdmin"
+                            class="admin-badge">
+                            <igx-badge value="Admin"></igx-badge>
+                        </div>
+                    </div>
+                    <div class="gender-birthday">
+                        <span> {{ person.genderName }} {{ person.birthdate | date: 'shortDate' }} </span>
+                    </div>
+                </div>
+
+                <div class="edit">
+                    <button (click)="onEditClicked()"
+                        igxButton="fab"
+                        igxripple="white"
+                        igxRipple
+                        role="button">
+                        <igx-icon name="edit"
+                            class="igx-icon">
+                        </igx-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>
